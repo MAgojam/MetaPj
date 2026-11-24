@@ -1,0 +1,14 @@
+Package: MetaPj
+Type: Package
+Title: Meta-Analysis with the Pj Python Service
+Version: 1.1.0
+Author: Maurizio Agosti
+Maintainer: Maurizio Agosti <magosti@gmail.com>
+Description: Demonstrates a jamovi module combining native controls, metafor
+    calculations and Python presentation through a separately installed Pj module.
+    Includes dichotomous, independent-group mean difference and generic
+    effect-size inputs with sampling variances, standard errors or confidence intervals.
+License: GPL (>= 2)
+Encoding: UTF-8
+Imports: jmvcore (>= 1.8.0), R6, metafor (>= 5.3-4), jsonlite, base64enc
+Remotes: MAgojam/metafor@0031b3ea9d76a38fde69961af957a3fe16f40c1a

@@ -1,0 +1,9 @@
+^jamovi/.*$
+^\.git.*$
+^tests$
+^docs$
+^tools$
+^.*\.jmo$
+^inst/python/__pycache__$
+^compile\.r$
+^examples$

@@ -1,0 +1,43 @@
+name: MetaPj
+title: MetaPj - meta-analysis through Pj
+version: 1.1.0
+jms: '1.0'
+usesNative: true
+minApp: 28.18.0
+authors:
+- Maurizio Agosti
+maintainer: Maurizio Agosti <magosti@gmail.com>
+description: 'Three native input tabs: dichotomous, mean differences and generic effects; metafor calculations
+  with Python/D3, Chart.js or Plotly through Pj 1.8.0 or newer.'
+analyses:
+- name: mzMetaPj
+  ns: MetaPj
+  title: Meta-analysis through Pj
+  menuGroup: MetaPj
+  menuTitle: Meta-analysis through Pj
+  arbitraryCode: true
+  arbitraryCode2: true
+datasets:
+- name: BCG vaccine — dichotomous outcomes
+  path: MetaPj_BCG.omv
+  description: Open MetaPj, select the Dichotomous tab and assign tpos, tneg, cpos and cneg.
+  tags:
+  - Meta-analysis
+  - Dichotomous
+  - Pj
+- name: Mean differences — Normand 1999
+  path: MetaPj_MeanDifferences.omv
+  description: Open MetaPj, select the Mean differences tab and assign n1i, m1i, sd1i, n2i, m2i and sd2i.
+  tags:
+  - Meta-analysis
+  - Mean differences
+  - Pj
+- name: Generic effects — BCG precomputed log RR
+  path: MetaPj_GenericEffects.omv
+  description: Select Generic effect sizes and Log ratio. Assign study, yi and vi (variance), sei (SE),
+    or ci_lower/ci_upper (95% normal CI). All effects and CI limits are already on the log RR analysis
+    scale.
+  tags:
+  - Meta-analysis
+  - Generic effects
+  - Pj

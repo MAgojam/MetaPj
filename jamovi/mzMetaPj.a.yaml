@@ -1,0 +1,279 @@
+name: mzMetaPj
+title: Meta-analysis through Pj
+menuGroup: MetaPj
+version: 1.1.0
+jas: '1.2'
+arbitraryCode: true
+options:
+- name: data
+  type: Data
+- name: dataType
+  title: ''
+  type: List
+  options:
+  - name: dichotomous
+    title: Dichotomous
+  - name: means
+    title: Mean differences
+  - name: generic
+    title: Generic effect sizes
+  default: dichotomous
+- name: study
+  title: Study label
+  type: Variable
+  default: null
+  permitted:
+  - factor
+  - id
+  - numeric
+  suggested:
+  - nominal
+  - id
+- name: ai
+  title: Events — Group 1
+  type: Variable
+  default: null
+  permitted:
+  - numeric
+  suggested:
+  - continuous
+- name: bi
+  title: Non-events — Group 1
+  type: Variable
+  default: null
+  permitted:
+  - numeric
+  suggested:
+  - continuous
+- name: ci
+  title: Events — Group 2
+  type: Variable
+  default: null
+  permitted:
+  - numeric
+  suggested:
+  - continuous
+- name: di
+  title: Non-events — Group 2
+  type: Variable
+  default: null
+  permitted:
+  - numeric
+  suggested:
+  - continuous
+- name: n1i
+  title: N — Group 1
+  type: Variable
+  default: null
+  permitted:
+  - numeric
+  suggested:
+  - continuous
+- name: m1i
+  title: Mean — Group 1
+  type: Variable
+  default: null
+  permitted:
+  - numeric
+  suggested:
+  - continuous
+- name: sd1i
+  title: SD — Group 1
+  type: Variable
+  default: null
+  permitted:
+  - numeric
+  suggested:
+  - continuous
+- name: n2i
+  title: N — Group 2
+  type: Variable
+  default: null
+  permitted:
+  - numeric
+  suggested:
+  - continuous
+- name: m2i
+  title: Mean — Group 2
+  type: Variable
+  default: null
+  permitted:
+  - numeric
+  suggested:
+  - continuous
+- name: sd2i
+  title: SD — Group 2
+  type: Variable
+  default: null
+  permitted:
+  - numeric
+  suggested:
+  - continuous
+- name: yi
+  title: Effect size (analysis scale)
+  type: Variable
+  default: null
+  permitted:
+  - numeric
+  suggested:
+  - continuous
+- name: uncertainty
+  title: Sampling variance / standard error
+  type: Variable
+  default: null
+  permitted:
+  - numeric
+  suggested:
+  - continuous
+- name: ciLower
+  title: Input CI — lower limit
+  type: Variable
+  default: null
+  permitted:
+  - numeric
+  suggested:
+  - continuous
+- name: ciUpper
+  title: Input CI — upper limit
+  type: Variable
+  default: null
+  permitted:
+  - numeric
+  suggested:
+  - continuous
+- name: measureDichotomous
+  title: Effect measure
+  type: List
+  options:
+  - name: RR
+    title: Risk ratio
+  - name: OR
+    title: Odds ratio
+  - name: RD
+    title: Risk difference
+  default: RR
+- name: measureMeans
+  title: Effect measure
+  type: List
+  options:
+  - name: MD
+    title: Mean difference
+  - name: SMD
+    title: Standardized mean difference (Hedges' g)
+  default: MD
+- name: measureGeneric
+  title: Effect scale
+  type: List
+  options:
+  - name: GEN
+    title: Generic effect — supplied scale
+  - name: GEN_LOG
+    title: Log ratio — display exp(effect)
+  default: GEN
+- name: genericInput
+  title: Uncertainty input
+  type: List
+  options:
+  - name: variance
+    title: Sampling variance
+  - name: se
+    title: Standard error
+  - name: ci
+    title: Normal-based confidence interval
+  default: variance
+- name: inputCiLevel
+  title: Input CI level (%)
+  type: Number
+  min: 50
+  max: 99.9
+  default: 95
+- name: fe
+  title: FE — common-effect model
+  type: Bool
+  default: true
+- name: re
+  title: RE — random-effects model (REML)
+  type: Bool
+  default: true
+- name: level
+  title: Confidence level (%)
+  type: Number
+  min: 50
+  max: 99.9
+  default: 95
+- name: engine
+  title: Graphics engine
+  type: List
+  options:
+  - name: d3
+    title: D3 intervals
+  - name: chart
+    title: Chart.js intervals
+  - name: plotly
+    title: Plotly forest
+  default: d3
+- name: showFunnel
+  title: Funnel plot (descriptive)
+  type: Bool
+  default: true
+- name: leaveOneOut
+  title: Leave-one-out sensitivity
+  type: Bool
+  default: false
+- name: python
+  title: Python interpreter
+  type: List
+  options:
+  - name: jamovi
+    title: jamovi Python
+  - name: system
+    title: System Python
+  default: jamovi
+- name: resultType
+  title: Graphic result
+  type: List
+  options:
+  - name: html
+    title: Interactive HTML
+  - name: svg
+    title: Native SVG
+  default: html
+- name: plotWidth
+  title: Figure width (px)
+  type: Integer
+  min: 600
+  max: 1600
+  default: 900
+- name: plotHeight
+  title: Figure height (px)
+  type: Integer
+  min: 320
+  max: 2000
+  default: 620
+- name: extensionDraft
+  type: Group
+  hidden: true
+  passive: true
+  elements:
+  - name: draft
+    type: String
+    default: "# The context contains metafor results, not the entire jamovi dataset.\ndef mzRender(context):\n\
+      \    mzpjShowTable(\n        [{\"Measure\": context[\"analysis\"][\"measure\"],\n          \"Included\
+      \ studies\": context[\"analysis\"][\"k\"]}],\n        name=\"custom_summary\", title=\"My Python\
+      \ summary\")\n    mzpjShowText(\"**Edit this function to add your own results.**\", name=\"custom_note\"\
+      )\n"
+  - name: filename
+    type: String
+    default: my_extension.py
+- name: extensionCode
+  type: String
+  default: ''
+  hidden: true
+- name: extensionRevision
+  type: Integer
+  default: 0
+  hidden: true
+- name: extensionScriptName
+  type: String
+  default: my_extension.py
+  hidden: true

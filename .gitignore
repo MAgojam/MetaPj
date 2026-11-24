@@ -1,0 +1,11 @@
+/build/
+*.jmo
+!MetaPj_1.1.0_win64.jmo
+!MetaPj_1.1.0_linux.jmo
+/tests/
+.Rhistory
+.RData
+.Rproj.user/
+__pycache__/
+*.pyc
+/inst/i18n/

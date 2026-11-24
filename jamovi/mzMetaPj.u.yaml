@@ -1,0 +1,232 @@
+name: mzMetaPj
+title: Meta-analysis through Pj
+jus: '3.0'
+stage: 0
+compilerMode: tame
+events:
+  loaded: ./mzMp_ui::mzLoaded
+  update: ./mzMp_ui::mzUpdate
+children:
+- type: ModeSelector
+  name: dataType
+  form: tabs
+  label: ''
+  stretchFactor: 1
+  children:
+  - type: Content
+    name: dichotomous
+    children:
+    - type: ComboBox
+      name: measureDichotomous
+    - type: VariableSupplier
+      name: supplier_dichotomous
+      persistentItems: false
+      stretchFactor: 1
+      permitted:
+      - numeric
+      - factor
+      - id
+      children:
+      - type: TargetLayoutBox
+        label: Study label (optional)
+        children:
+        - type: VariablesListBox
+          name: study_dichotomous
+          isTarget: true
+          maxItemCount: 1
+          optionName: study
+      - type: TargetLayoutBox
+        label: Events — Group 1
+        children:
+        - type: VariablesListBox
+          name: ai
+          isTarget: true
+          maxItemCount: 1
+      - type: TargetLayoutBox
+        label: Non-events — Group 1
+        children:
+        - type: VariablesListBox
+          name: bi
+          isTarget: true
+          maxItemCount: 1
+      - type: TargetLayoutBox
+        label: Events — Group 2
+        children:
+        - type: VariablesListBox
+          name: ci
+          isTarget: true
+          maxItemCount: 1
+      - type: TargetLayoutBox
+        label: Non-events — Group 2
+        children:
+        - type: VariablesListBox
+          name: di
+          isTarget: true
+          maxItemCount: 1
+  - type: Content
+    name: means
+    children:
+    - type: ComboBox
+      name: measureMeans
+    - type: VariableSupplier
+      name: supplier_means
+      persistentItems: false
+      stretchFactor: 1
+      permitted:
+      - numeric
+      - factor
+      - id
+      children:
+      - type: TargetLayoutBox
+        label: Study label (optional)
+        children:
+        - type: VariablesListBox
+          name: study_means
+          isTarget: true
+          maxItemCount: 1
+          optionName: study
+      - type: TargetLayoutBox
+        label: N — Group 1
+        children:
+        - type: VariablesListBox
+          name: n1i
+          isTarget: true
+          maxItemCount: 1
+      - type: TargetLayoutBox
+        label: Mean — Group 1
+        children:
+        - type: VariablesListBox
+          name: m1i
+          isTarget: true
+          maxItemCount: 1
+      - type: TargetLayoutBox
+        label: SD — Group 1
+        children:
+        - type: VariablesListBox
+          name: sd1i
+          isTarget: true
+          maxItemCount: 1
+      - type: TargetLayoutBox
+        label: N — Group 2
+        children:
+        - type: VariablesListBox
+          name: n2i
+          isTarget: true
+          maxItemCount: 1
+      - type: TargetLayoutBox
+        label: Mean — Group 2
+        children:
+        - type: VariablesListBox
+          name: m2i
+          isTarget: true
+          maxItemCount: 1
+      - type: TargetLayoutBox
+        label: SD — Group 2
+        children:
+        - type: VariablesListBox
+          name: sd2i
+          isTarget: true
+          maxItemCount: 1
+  - type: Content
+    name: generic
+    children:
+    - type: ComboBox
+      name: measureGeneric
+    - type: ComboBox
+      name: genericInput
+    - type: VariableSupplier
+      name: supplier_generic
+      persistentItems: false
+      stretchFactor: 1
+      permitted:
+      - numeric
+      - factor
+      - id
+      children:
+      - type: TargetLayoutBox
+        label: Study label (optional)
+        children:
+        - type: VariablesListBox
+          name: study_generic
+          isTarget: true
+          maxItemCount: 1
+          optionName: study
+      - type: TargetLayoutBox
+        label: Effect size (analysis scale)
+        children:
+        - type: VariablesListBox
+          name: yi
+          isTarget: true
+          maxItemCount: 1
+      - type: TargetLayoutBox
+        label: Sampling variance / standard error
+        children:
+        - type: VariablesListBox
+          name: uncertainty
+          isTarget: true
+          maxItemCount: 1
+          enable: (!genericInput:ci)
+      - type: TargetLayoutBox
+        label: Input CI — lower limit
+        children:
+        - type: VariablesListBox
+          name: ciLower
+          isTarget: true
+          maxItemCount: 1
+          enable: (genericInput:ci)
+      - type: TargetLayoutBox
+        label: Input CI — upper limit
+        children:
+        - type: VariablesListBox
+          name: ciUpper
+          isTarget: true
+          maxItemCount: 1
+          enable: (genericInput:ci)
+    - type: TextBox
+      name: inputCiLevel
+      format: number
+      suffix: '%'
+      enable: (genericInput:ci)
+    - type: Label
+      label: Use the same analysis scale for effects and CI limits.
+    - type: Label
+      label: For ratios, supply log effects and log CI limits.
+- type: CollapseBox
+  label: Models
+  collapsed: false
+  children:
+  - type: CheckBox
+    name: fe
+  - type: CheckBox
+    name: re
+  - type: TextBox
+    name: level
+    format: number
+    suffix: '%'
+- type: CollapseBox
+  label: Presentation
+  collapsed: false
+  children:
+  - type: ComboBox
+    name: engine
+  - type: ComboBox
+    name: python
+  - type: CheckBox
+    name: showFunnel
+  - type: CheckBox
+    name: leaveOneOut
+  - type: ComboBox
+    name: resultType
+  - type: TextBox
+    name: plotWidth
+    format: number
+  - type: TextBox
+    name: plotHeight
+    format: number
+- type: CollapseBox
+  label: Python extension (optional)
+  collapsed: true
+  children:
+  - type: CustomControl
+    name: codeArea
+    stretchFactor: 1

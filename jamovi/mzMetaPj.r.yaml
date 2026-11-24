@@ -1,0 +1,130 @@
+name: mzMetaPj
+title: Meta-analysis through Pj
+jrs: '1.1'
+items:
+- name: status
+  title: Status
+  type: Html
+- name: studies
+  title: Study effects
+  type: Table
+  visible: false
+  clearWith: []
+  columns:
+  - name: Study
+    title: Study
+    type: text
+  - name: Estimate
+    title: Estimate
+    type: number
+    format: zto
+  - name: Lower
+    title: Lower
+    type: number
+    format: zto
+  - name: Upper
+    title: Upper
+    type: number
+    format: zto
+  - name: FE_weight
+    title: FE weight (%)
+    type: number
+    format: zto
+  - name: RE_weight
+    title: RE weight (%)
+    type: number
+    format: zto
+- name: models
+  title: Model estimates
+  type: Table
+  visible: false
+  clearWith: []
+  columns:
+  - name: Model
+    title: Model
+    type: text
+  - name: Estimate
+    title: Estimate
+    type: number
+    format: zto
+  - name: SE
+    title: SE (analysis scale)
+    type: number
+    format: zto
+  - name: z
+    title: z
+    type: number
+    format: zto
+  - name: p
+    title: p
+    type: number
+    format: pvalue
+  - name: Lower
+    title: Lower
+    type: number
+    format: zto
+  - name: Upper
+    title: Upper
+    type: number
+    format: zto
+  - name: PI_lower
+    title: PI lower
+    type: number
+    format: zto
+  - name: PI_upper
+    title: PI upper
+    type: number
+    format: zto
+- name: heterogeneity
+  title: Heterogeneity
+  type: Table
+  visible: false
+  clearWith: []
+  columns:
+  - name: Model
+    title: Model
+    type: text
+  - name: tau2
+    title: Tau²
+    type: number
+    format: zto
+  - name: I2
+    title: I² (%)
+    type: number
+    format: zto
+  - name: H2
+    title: H²
+    type: number
+    format: zto
+  - name: Q
+    title: Q
+    type: number
+    format: zto
+  - name: df
+    title: df
+    type: integer
+  - name: p
+    title: p
+    type: number
+    format: pvalue
+- name: forestHtml
+  title: Forest plot
+  type: Html
+  visible: false
+- name: forestSvg
+  title: Forest plot
+  type: Svg
+  visible: false
+- name: diagnostics
+  title: Diagnostics through Pj
+  type: Group
+  visible: false
+  items: []
+- name: extensionStatus
+  title: Python extension
+  type: Html
+- name: extension
+  title: Python extension results
+  type: Group
+  visible: false
+  items: []
